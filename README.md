@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# 🎯 React Lotto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+로또 번호를 자동/수동/추천으로 생성하고, 당첨 결과를 확인할 수 있는 리액트 프로젝트입니다.
 
-## Available Scripts
+## 📌 기능
 
-In the project directory, you can run:
+1. **로또 번호 생성기**
+    - [ ] 회차 선택: 이전 회차를 선택해 당첨 결과를 바로 확인할 수 있도록
+    - [ ] 자동: 랜덤 6개 번호 생성
+    - [ ] 수동: 사용자가 버튼을 클릭하여 6개 번호 선택
+    - [ ] 추천: 당첨번호 통계 기반 6개 추천 번호 생성 
+    - [ ] 완료: 선택된 번호 저장 (로컬 스토리지 활용)
 
-### `npm start`
+2. **선택된 번호 리스트**
+    - [ ] 사용자가 선택한 로또 번호 5줄까지 출력 (로컬 스토리지 활용)
+    - [ ] 당첨 결과 확인: 선택된 번호 저장 (csv 파일 활용)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **당첨 결과 확인**
+   - [ ] 로또 API를 통해 당첨번호 조회
+   - [ ] 선택한 번호와 비교하여 맞춘 개수 표시 (csv 파일 활용)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4. **전체 결과 확인**
+   - [ ] 로또 API를 통해 당첨번호 조회
+   - [ ] 회차별로 저장된 로또번호와 비교하여 맞춘 개수 표시 (csv 파일 활용)
 
-### `npm test`
+## 🏗️ 폴더 구조
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+📦 react-lotto
+├── 📂 src
+│   ├── 📂 animation
+│   │   ├── winning-cup.json  # 결과 확인 애니메이션
+│   ├── 📂 components
+│   │   ├── LottoGenerator.js  # 번호 생성기
+│   │   ├── LottoItem.js  # 선택된 로또번호 리스트
+│   │   ├── LottoList.js  # 선택된 로또 리스트
+│   │   ├── LottoResult.js  # 당첨 결과 확인
+│   ├── 📂 data
+│   │   ├── 로또예상번호.csv  # 로또 예상 번호
+│   │   ├── 로또당첨번호.csv  # 로또 당첨 번호
+│   ├── App.js  # 메인 컴포넌트
+│   ├── index.js  # 프로젝트 진입점
+├── public
+├── package.json
+└── README.md
+```
 
-### `npm run build`
+## 🚀 실행 방법
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1️⃣ 프로젝트 클론
+```sh
+git clone https://github.com/jeonghoon0725/react-lotto.git
+cd react-lotto
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2️⃣ 패키지 설치
+```sh
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3️⃣ 프로젝트 실행
+```sh
+npm start
+```
 
-### `npm run eject`
+## 🛠️ 사용 기술
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React (Hooks)
+- JavaScript (ES6+)
+- LocalStorage
+- Fetch API (로또 당첨번호 조회)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📌 참고 API
+- [로또 당첨번호 조회 API](https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=1160)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📄 라이선스
+이 프로젝트는 MIT 라이선스를 따릅니다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+✅ **개발자:** [Hoon](https://github.com/jeonghoon0725)  
+📅 **최초 작성일:** 2025-03-02
