@@ -1,38 +1,207 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: "NanumSquareRound";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  font-family: "NanumSquareRound", sans-serif;
+  font-size: 18px;
+  letter-spacing: -0.03rem;
+  white-space: nowrap;
 }
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background-color: #f1f5f9;
   min-height: 100vh;
+
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+#root {
+  background-color: white;
+}
+
+.App {
+  padding: 0px 50px;
+  width: 1152px;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+}
+
+/* Button */
+.Button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 20px 40px;
+  transition: all 0.3s ease-in-out;
+}
+
+.Button_default {
+  background-color: #ececec;
+  color: black;
+}
+
+.Button_positive {
+  background-color: #4292ed;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Button_negative {
+  background-color: #63686e;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Selector */
+.Selector {
+  width: 400px;
+  height: 760px;
+  padding: 30px 0px;
+}
+
+.Selector .cost_tag {
+  display: flex;
+  justify-content: center;
+  margin-right: 5px;
+  margin-bottom: 16px;
+  border: 0.5px solid #f56d6d;
+}
+
+.Selector .cost_tag span {
+  font-size: 28px;
+  color: white;
+  margin-left: 100px;
+  padding: 15px 10px;
+  background-color: #f56d6d;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Selector .number_list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.Selector .number_list Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+
+.Selector .control_btn {
+  display: grid;
+  grid-template-areas:
+    "reset auto"
+    "submit submit";
+  gap: 10px;
+}
+
+.Selector .control_btn Button:nth-child(1) {
+  grid-area: reset;
+}
+
+.Selector .control_btn Button:nth-child(2) {
+  grid-area: auto;
+}
+
+.Selector .control_btn Button:nth-child(3) {
+  grid-area: submit;
+}
+
+/* LottoList */
+.LottoList {
+  flex-grow: 1;
+  height: 760px;
+  padding: 10px 30px;
+  margin: 0px 20px;
+  border: 1px solid #e2e2e2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.LottoList .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 0px;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.LottoList .header span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.LottoList .lotto_count {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 30px;
+}
+
+.LottoList .lotto_count span:nth-child(2) {
+  font-size: 16px;
+  font-weight: bold;
+  color: #f56d6d;
+}
+
+.LottoList .lotto_list {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.LottoList .result_btn Button {
+  width: 100%;
+  padding: 25px 0px;
+  font-size: 22px;
+}
+
+/* LottoItem */
+.LottoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.LottoItem .tag span {
+  font-size: 22px;
+  margin-right: 20px;
+}
+
+.LottoItem .content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.LottoItem .content span {
+  font-size: 22px;
+  margin: 0px 20px;
+}
+
+.LottoItem Button {
+  margin-left: 20px;
 }
