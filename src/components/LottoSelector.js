@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { LottoStateContext, LottoDispatchContext } from "../App";
 import Button from "./Button";
 
 const list = [...Array(45).keys()].map((x) => ({ id: x + 1 }));
 
-const LottoSelector = ({ onSubmit }) => {
+const LottoSelector = () => {
   const LOTTO_MAX_COUNT = 6;
 
   const [state, setState] = useState({
     isAuto: false,
     selectedNumbers: [],
   });
+
+  const lottoList = useContext(LottoStateContext);
+  const { onSubmit } = useContext(LottoDispatchContext);
 
   const handleSelect = (newNum) => {
     if (
@@ -19,21 +23,16 @@ const LottoSelector = ({ onSubmit }) => {
       alert("최대 6개까지 선택가능합니다.");
       return;
     }
-
+    
     if (typeof newNum === "object") {
       setState({ isAuto: true, selectedNumbers: newNum });
     } else {
-      state.selectedNumbers.includes(newNum)
-        ? setState({
-            isAuto: false,
-            selectedNumbers: state.selectedNumbers.filter(
-              (item) => item !== newNum
-            ),
-          })
-        : setState({
-            isAuto: false,
-            selectedNumbers: [...state.selectedNumbers, newNum],
-          });
+      setState({
+        isAuto: false,
+        selectedNumbers: state.selectedNumbers.includes(newNum)
+        ? state.selectedNumbers.filter((item) => item !== newNum)
+        : [...state.selectedNumbers, newNum],
+      })
     }
   };
 
@@ -45,21 +44,24 @@ const LottoSelector = ({ onSubmit }) => {
   };
 
   const handleAuto = () => {
-    const randomNumArr = [];
-    for (let i = 0; i < 6; i++) {
-      let randomNum = Math.floor(Math.random() * 45 + 1);
-      if (randomNumArr.indexOf(randomNum) === -1) {
-        randomNumArr.push(randomNum);
-      } else {
-        i--;
-      }
+    const randomNumArr = new Set();
+    while(randomNumArr.size < 6) {
+      randomNumArr.add(Math.floor(Math.random() * 45 + 1));
     }
-    handleSelect(randomNumArr);
+    
+    handleSelect([...randomNumArr]);
   };
 
   const handleSubmit = () => {
-    onSubmit(state.isAuto, state.selectedNumbers);
-    handleReset();
+    if (
+      state.selectedNumbers.length === LOTTO_MAX_COUNT
+      && lottoList.length < 5
+    ) {
+      onSubmit(state.isAuto, state.selectedNumbers);
+      handleReset();
+
+      return;
+    }
   };
 
   return (
