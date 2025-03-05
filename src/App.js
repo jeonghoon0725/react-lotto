@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 import "./App.css";
 import LottoList from "./components/LottoList";
 import LottoSelector from "./components/LottoSelector";
@@ -6,6 +6,10 @@ import LottoSelector from "./components/LottoSelector";
 const reducer = (state, action) => {
   let newState = [];
   switch (action.type) {
+    case "INIT": {
+      newState = action.data;
+      break;
+    }
     case "SUBMIT": {
       newState = [...state, action.data];
       break;
@@ -21,6 +25,9 @@ const reducer = (state, action) => {
     default:
       return state;
   }
+
+  localStorage.setItem("lottoItems", JSON.stringify(newState));
+
   return newState;
 };
 
@@ -31,6 +38,17 @@ const App = () => {
   const [data, dispatch] = useReducer(reducer, []);
 
   const dataId = useRef(0);
+
+  useEffect(() => {
+    const storageData = localStorage.getItem("lottoItems");
+    if (storageData) {
+      const lottoList = JSON.parse(storageData);
+      if (lottoList.length >= 1) {
+        dataId.current = parseInt(lottoList[lottoList.length - 1].id) + 1;
+        dispatch({ type: "INIT", data: lottoList });
+      }
+    }
+  }, []);
 
   const onSubmit = (isAuto, selectedNumbers) => {
     dispatch({
