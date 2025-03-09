@@ -1,7 +1,9 @@
 import React, { useEffect, useReducer, useRef } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import LottoList from "./components/LottoList";
 import LottoSelector from "./components/LottoSelector";
+import LottoResult from "./components/LottoResult";
 
 const reducer = (state, action) => {
   let newState = [];
@@ -80,10 +82,27 @@ const App = () => {
   return (
     <LottoStateContext.Provider value={data}>
       <LottoDispatchContext.Provider value={dispatches}>
-        <div className="App">
-          <LottoSelector />
-          <LottoList />
-        </div>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div className="App">
+                  <LottoSelector />
+                  <LottoList />
+                </div>
+              }
+            />
+            <Route
+              path="/result"
+              element={
+                <div className="App">
+                  <LottoResult />
+                </div>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
       </LottoDispatchContext.Provider>
     </LottoStateContext.Provider>
   );

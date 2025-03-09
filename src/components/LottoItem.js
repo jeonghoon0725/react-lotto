@@ -2,27 +2,78 @@ import React, { useContext } from "react";
 import { LottoDispatchContext } from "../App";
 import Button from "./Button";
 
-const LottoItem = ({ id, isAuto, selectedNumbers }) => {
+import { changeColor } from "../utils/LottoColor";
+
+const LottoItem = ({
+  id,
+  isDeleteBtnHide,
+  isAuto,
+  selectedNumbers,
+  winningNumber,
+}) => {
   const { onRemove } = useContext(LottoDispatchContext);
-  
+
   const handleRemove = () => {
     onRemove(id);
+  };
+
+  const compareNumber = () => {
+    let count = 0;
+    let result = "";
+
+    for (let i of selectedNumbers) {
+      if (winningNumber.indexOf(i) !== -1) {
+        count += 1;
+      }
+    }
+
+    switch (count) {
+      case 0:
+      case 1:
+      case 2:
+        result = "낙첨";
+        break;
+        result = "5등";
+        break;
+      case 3:
+        result = "5등";
+        break;
+      case 4:
+        result = "4등";
+        break;
+      case 5:
+        result = "3등";
+        //2등은  5개 + 보너스 번호
+        break;
+      case 6:
+        result = "1등";
+        break;
+      default:
+        result = "";
+    }
+
+    return result;
   };
 
   return (
     <div className="LottoItem">
       <div className="tag">
-        <span>{id + 1}</span>
         <span>{isAuto ? "자동" : "수동"}</span>
       </div>
       <div className="content">
         {selectedNumbers
           .sort((a, b) => a - b)
           .map((num) => (
-            <span key={num}>{num}</span>
+            <div key={num} className={changeColor(num)}>
+              <span>{num}</span>
+            </div>
           ))}
       </div>
-      <Button text={"삭제"} onClick={handleRemove} />
+      {isDeleteBtnHide ? (
+        <Button text={compareNumber()} />
+      ) : (
+        <Button text={"삭제"} onClick={handleRemove} />
+      )}
     </div>
   );
 };

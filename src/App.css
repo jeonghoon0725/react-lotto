@@ -168,7 +168,8 @@ body {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
+  margin: 4px 0px;
 }
 
 .LottoList .result_btn Button {
@@ -183,7 +184,8 @@ body {
   justify-content: space-between;
   align-items: center;
 
-  margin-bottom: 30px;
+  padding: 20px 0px;
+  border-bottom: 2px dashed #e2e2e2;
 }
 
 .LottoItem .tag span {
@@ -197,11 +199,121 @@ body {
   justify-content: space-between;
 }
 
+.LottoItem .content div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  margin: 0px 5px;
+}
+
 .LottoItem .content span {
   font-size: 22px;
-  margin: 0px 20px;
+  color: white;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .LottoItem Button {
   margin-left: 20px;
+  padding: 15px 30px;
+}
+
+/* Result */
+.LottoResult {
+  flex-grow: 1;
+  height: 100%;
+  padding: 10px 30px;
+  margin: 0px 20px;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.LottoResult .header {
+  background-color: #4292ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px 0px;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.LottoResult .header span {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ececec;
+}
+
+.LottoResult .winning_number_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0px;
+}
+
+.LottoResult .winning_number_wrapper > span {
+  font-size: 26px;
+  font-weight: bold;
+  padding: 15px 0px;
+}
+
+.LottoResult .winning_number {
+  display: flex;
+}
+
+.LottoResult .winning_number > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+
+  font-size: 24px;
+  color: white;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+
+  margin: 0px 5px;
+}
+
+.LottoResult .lotto_list {
+  margin-top: 10px;
+  flex-grow: 1;
+}
+
+.LottoResult .result_btn Button {
+  width: 100%;
+  padding: 25px 0px;
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+/* lottoColor */
+.quotient-zero {
+  background-color: #fce832;
+}
+
+.quotient-one {
+  background-color: #68c6f0;
+}
+
+.quotient-two {
+  background-color: #ff7272;
+}
+
+.quotient-three {
+  background-color: #a7a8a7;
+}
+
+.quotient-four {
+  background-color: #95c73a;
 }
