@@ -1,6 +1,8 @@
 # 🎯 React Lotto
 
 로또 번호를 자동/수동/추천으로 생성하고, 당첨 결과를 확인할 수 있는 리액트 프로젝트입니다.
+![Image](https://github.com/user-attachments/assets/20f63aa6-3682-46dc-a865-7520071db814)
+![Image](https://github.com/user-attachments/assets/afc75616-a044-4332-85a3-88cb75578c9c)
 
 ## 📌 기능
 
